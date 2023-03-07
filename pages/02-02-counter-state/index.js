@@ -1,7 +1,7 @@
 import {useState} from 'react';
 
 export default function CounterStatePage() {
-  const [count, setCount] = useState(0); // let count = 0
+  const [count, setCount] = useState(0); // initialize count = 0
 
   function handleClickIncrement() {
     setCount(count + 1); // count ++
