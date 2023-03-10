@@ -1,5 +1,4 @@
 import {gql, useMutation} from '@apollo/client';
-import {useState} from 'react';
 
 const CREATE_PRODUCT = gql`
   mutation createProduct(
