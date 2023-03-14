@@ -12,7 +12,7 @@ export default function BoardWriteUI(props) {
       Contents :
       <MyInput type="text" onChange={props.onChangeContents} />
       <br />
-      <MyButton onClick={props.onClickSubmit}>
+      <MyButton zzz={props.myColor} onClick={props.onClickSubmit}>
         GRAPHQL-API 동기 요청하기
       </MyButton>
     </>

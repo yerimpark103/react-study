@@ -4,6 +4,8 @@ import {CREATE_BOARD} from './BoardWrite.queries';
 import BoardWriteUI from './BoardWrite.presenter';
 
 export default function BoardWrite() {
+  const [myColor, setMyColor] = useState(false);
+
   const [writer, setWriter] = useState('');
   const [title, setTitle] = useState('');
   const [contents, setContents] = useState('');
@@ -24,14 +26,23 @@ export default function BoardWrite() {
 
   const onChangeWriter = event => {
     setWriter(event.target.value);
+    validator();
   };
 
   const onChangeTitle = event => {
     setTitle(event.target.value);
+    validator();
   };
 
   const onChangeContents = event => {
     setContents(event.target.value);
+    validator();
+  };
+
+  const validator = () => {
+    if (writer !== '' && title !== '' && event.target.value !== '') {
+      setMyColor(true);
+    }
   };
 
   return (
@@ -40,6 +51,7 @@ export default function BoardWrite() {
       onChangeWriter={onChangeWriter}
       onChangeTitle={onChangeTitle}
       onChangeContents={onChangeContents}
+      myColor={myColor}
     />
   );
 }
