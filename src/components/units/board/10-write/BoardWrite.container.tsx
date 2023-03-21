@@ -1,17 +1,17 @@
-import {useMutation} from '@apollo/client';
-import {ChangeEvent, useState} from 'react';
-import {CREATE_BOARD, UPDATE_BOARD} from './BoardWrite.queries';
-import BoardWriteUI from './BoardWrite.presenter';
-import {useRouter} from 'next/router';
-import {IBoardWriteProps, IMyVariables} from './BoardWrite.types';
+import {useMutation} from "@apollo/client";
+import {ChangeEvent, useState} from "react";
+import {CREATE_BOARD, UPDATE_BOARD} from "./BoardWrite.queries";
+import BoardWriteUI from "./BoardWrite.presenter";
+import {useRouter} from "next/router";
+import {IBoardWriteProps, IMyVariables} from "./BoardWrite.types";
 
 export default function BoardWrite(props: IBoardWriteProps) {
   const router = useRouter();
   const [myColor, setMyColor] = useState(false);
 
-  const [writer, setWriter] = useState('');
-  const [title, setTitle] = useState('');
-  const [contents, setContents] = useState('');
+  const [writer, setWriter] = useState("");
+  const [title, setTitle] = useState("");
+  const [contents, setContents] = useState("");
 
   const [createBoard] = useMutation(CREATE_BOARD);
   const [updateBoard] = useMutation(UPDATE_BOARD);
@@ -19,9 +19,9 @@ export default function BoardWrite(props: IBoardWriteProps) {
   const onClickSubmit = async () => {
     const result = await createBoard({
       variables: {
-        writer: writer,
-        title: title,
-        contents: contents,
+        writer,
+        title,
+        contents,
       },
     });
     alert(result.data.createBoard.message);
@@ -58,7 +58,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
   };
 
   const validator = () => {
-    if (writer !== '' && title !== '' && contents !== '') {
+    if (writer !== "" && title !== "" && contents !== "") {
       setMyColor(true);
     }
   };

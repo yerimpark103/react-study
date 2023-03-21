@@ -1,21 +1,21 @@
-import {Button} from 'antd';
-import axios from 'axios';
-import {useState} from 'react';
+import {Button} from "antd";
+import axios from "axios";
+import {useState} from "react";
 
 export default function RestGetPage() {
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState("");
 
   function onClickAsync() {
-    const result = axios.get('https://koreanjson.com/posts/1');
+    const result = axios.get("https://koreanjson.com/posts/1");
     console.log(result);
     // Promise {<pending>}
   }
 
   async function onClickSync() {
-    const result = await axios.get('https://koreanjson.com/posts/1');
+    const result = await axios.get("https://koreanjson.com/posts/1");
     console.log(result);
     setTitle(result.data.title);
-    // {data: {…}, status: 200, statusText: 'OK', headers: AxiosHeaders, config: {…}, …}
+    // {data: {…}, status: 200, statusText: 'OK', headers: AxiosHeaders, config: {…},…}
   }
 
   return (

@@ -1,5 +1,5 @@
-import {useQuery, gql} from '@apollo/client';
-import {useRouter} from 'next/router';
+import {useQuery, gql} from "@apollo/client";
+import {useRouter} from "next/router";
 
 const FETCH_BOARD = gql`
   query fetchBoard($number: Int) {
@@ -21,8 +21,9 @@ export default function StaticRoutedPage() {
     },
   });
 
-  const onClickMoveToEdit = () => {
-    router.push(`/10-01-typescript-boards/${router.query.number}/edit`);
+  const onClickMoveToEdit = async () => {
+    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+    await router.push(`/10-01-typescript-boards/${router.query.number}/edit`);
   };
 
   console.log(data);
@@ -30,7 +31,7 @@ export default function StaticRoutedPage() {
   return (
     <>
       <div>{router.query.number} 게시글 이동 완료</div>
-      <div>작성자 : {data ? data.fetchBoard.writer : '로딩중입니다...'}</div>
+      <div>작성자 : {data ? data.fetchBoard.writer : "로딩중입니다..."}</div>
       <div>제목 : {data && data.fetchBoard.title}</div>
       <div>내용 : {data?.fetchBoard.contents}</div>
 

@@ -1,5 +1,5 @@
-import {useQuery, gql} from '@apollo/client';
-import styled from '@emotion/styled';
+import {useQuery, gql} from "@apollo/client";
+import styled from "@emotion/styled";
 
 const FETCH_BOARDS = gql`
   query fetchBoards {
@@ -27,8 +27,8 @@ export default function StaticRoutedPage() {
 
   return (
     <>
-      {data?.fetchBoards.map(board => (
-        <Row>
+      {data?.fetchBoards.map((board) => (
+        <Row key={board.number}>
           <Column>
             <input type="checkbox" />
           </Column>
