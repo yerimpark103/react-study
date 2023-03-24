@@ -31,7 +31,7 @@ export default function Layout(props: ILayoutProps) {
       <LayoutNavigation />
       <div style={{flex: "1", display: "flex"}}>
         <LayoutSidebar />
-        {props.children}
+        <div style={{display: "unset", width: "100%"}}>{props.children}</div>
       </div>
       <LayoutFooter />
     </LayoutContainer>
