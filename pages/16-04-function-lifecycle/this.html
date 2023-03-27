@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title>this의 이해</title>
+  <script>
+    class Counter {
+      count = 10
+
+      onClickButton = () => {
+        console.log('현재 카운트 ', this.count)
+      }
+
+      render(){
+        const button = document.createElement('button')
+        button.count = 100;
+        button.innerText = "Click me"
+        /* 1. 
+        onClickButton(){} 을 사용할 때 (동적인 함수)
+        .bind(this)로 전역 count를 사용할 수 있게 됨. 
+        */
+        // button.addEventListener("click", this.onClickButton.bind(this))
+        
+        /* 2. 
+        onClickButton = () => {} 화살표함수로 만들어서 정적인 함수로 만들 수 있다. \
+        */
+        button.addEventListener("click", this.onClickButton)
+        document.body.appendChild(button)
+      }
+    }
+
+    window.onload = function(){
+      const counter = new Counter()
+      counter.render();
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>
