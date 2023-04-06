@@ -6,6 +6,7 @@ import {
   ApolloLink,
 } from "@apollo/client";
 import {createUploadLink} from "apollo-upload-client";
+import {useEffect} from "react";
 import {useRecoilState} from "recoil";
 
 const GLOBAL_STATE = new InMemoryCache();
@@ -16,6 +17,39 @@ interface IApolloSettingProps {
 
 export default function ApolloSetting(props: IApolloSettingProps) {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
+
+  /*
+  // 1. 프리렌더링 예제 : process.browser
+  if (process.browser) {
+    console.log("browser");
+    const result = localStorage.getItem("accessToken");
+    console.log(result);
+    if (result) setAccessToken(result);
+  } else {
+    console.log("frontend server");
+  }
+ */
+
+  /*
+  // 2. 프리렌더링 예제 : typeof window
+  if (typeof window !== "undefined") {
+    console.log("browser");
+    const result = localStorage.getItem("accessToken");
+    console.log(result);
+    if (result) setAccessToken(result);
+  } else {
+    console.log("frontend server");
+  }
+ */
+
+  // 3. 프리렌더링 무시 : useEffect
+  useEffect(() => {
+    console.log("browser");
+    const result = localStorage.getItem("accessToken");
+    console.log(result);
+    if (result) setAccessToken(result);
+  }, []);
+
   const uploadLink = createUploadLink({
     uri: "http://backendonline.codebootcamp.co.kr/graphql",
     headers: {Authorization: `Bearer ${accessToken}`},

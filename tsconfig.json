@@ -27,7 +27,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "pages/22-02-login-success/temp.js", "pages/23-05-closure/hoc.js"  ],
   "exclude": [
     "node_modules"
   ]
