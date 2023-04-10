@@ -20,5 +20,7 @@ module.exports = {
     "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/triple-slash-reference": "off",
     "@typescript-eslint/consistent-type-imports": "off",
+    "@typescript-eslint/naming-convention": "off",
+    "@typescript-eslint/restrict-plus-operands": "off",
   },
 };
