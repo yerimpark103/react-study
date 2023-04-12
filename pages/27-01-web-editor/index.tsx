@@ -1,7 +1,6 @@
 // import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
-import {Modal} from "antd";
 
 const ReactQuill = dynamic(async () => await import("react-quill"), {
   ssr: false,
@@ -12,8 +11,8 @@ export default function WebEditorPage() {
     console.log(value);
   };
 
-  const onClickSubmit = () => {
-    // const {Modal} = dynamic(async () => await import("antd"), {ssr: false}); // code splitting
+  const onClickSubmit = async () => {
+    const {Modal} = await import("antd"); // code splitting
     Modal.success({content: "등록에 성공했습니다"});
   };
 
