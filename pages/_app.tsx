@@ -11,7 +11,7 @@ function MyApp({Component}: AppProps) {
     // <Head>
     //     <script
     //       type="text/javascript"
-    //       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=90df5911074985507e4c3b111e125e2f"
+    //       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=NEXT_PUBLIC_KAKAO_MAP_API_KEY"
     //     ></script>
     //   </Head>
     <>
