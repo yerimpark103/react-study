@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title>My Axios</title>
+  <script>
+    const myAxios = {
+      get: (url) => {
+        return new Promise((resolve, reject) => {
+          const qq = new XMLHttpRequest();
+          qq.open("get", url);
+          qq.send();
+          qq.addEventListener("load", (res) => {
+            resolve(res.target.response);
+          });
+        });
+      },
+      post: (url) => {}
+    }
+    const onClickAxios = async() => {
+      // axios 요청
+      // 1. .then()으로 받기
+      myAxios.get("https://koreanjson.com/posts/1").then((res)=>{
+        console.log('then', res)
+      })
+
+      // 2. await으로 받기
+      const result = await myAxios.get("https://koreanjson.com/posts/1");
+      console.log('await', result)
+    }
+  </script>
+</head>
+<body>
+  <button onclick="onClickAxios()">Axios Call</button>
+</body>
+</html>

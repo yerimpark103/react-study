@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title>Macro/Micro Queue</title>
+  <script>
+    const onClickLoop = () =>{
+      console.log('시작')
+
+      // 비동기작업(태스크큐에 들어감)
+      setTimeout(() => {
+        new Promise((resolve) => resolve('hello')).then(()=>{
+          console.log('promise, SetTimeout안에서 실행')
+        })
+        console.log('setTimeout, Macro queue, 0초 뒤에 실행')
+      }, 0);
+
+      // 비동기작업(마이크로큐에 들어감)
+      new Promise((resolve) => resolve('hello')).then(()=>{
+          console.log('promise 1, Micro queue, 0초 뒤에')
+      })
+
+      // 비동기작업(태스크큐에 들어감)
+      setInterval(() => {
+        console.log('setInterval, Macro queue, 0초마다 실행')
+      }, 0);
+
+      let sum = 0;
+      for (let i = 0; i <= 9000000; ++i){
+        sum += 1;
+      }
+
+      // 비동기작업(마이크로큐에 들어감)
+      new Promise((resolve) => resolve('hello')).then(()=>{
+          console.log('promise 2, Micro queue, 0초 뒤에')
+      })
+      console.log('끝')
+    }
+  </script>
+</head>
+<body>
+  <button onclick="onClickLoop()">시작하기</button>
+</body>
+</html>

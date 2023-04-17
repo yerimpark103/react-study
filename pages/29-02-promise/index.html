@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title>Promise</title>
+  <script>
+    const onClickThen = () => {
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          try {
+            const res = 'hello'
+          resolve(res);
+          } catch (error) {
+          reject('error');
+          }
+        }, 2000)
+      }).then(res =>{
+        console.log(res);
+      });
+    }
+    const onClickAwait = async() => {
+      const result = await new Promise((resolve, reject) => {
+        setTimeout(() => {
+          try {
+            const res = 'hello'
+          resolve(res);
+          } catch (error) {
+          reject('error');
+          }
+        }, 2000);
+      });
+      console.log(result);
+    }
+  </script>
+</head>
+<body>
+  <button onclick="onClickThen()">Promise (.then)</button>
+  <button onclick="onClickAwait()">Promise (await)</button>
+</body>
+</html>
