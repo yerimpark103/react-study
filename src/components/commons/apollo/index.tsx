@@ -9,7 +9,6 @@ import {
 } from "@apollo/client";
 import {onError} from "@apollo/client/link/error";
 import {createUploadLink} from "apollo-upload-client";
-import {gql, GraphQLClient} from "graphql-request";
 import {useEffect} from "react";
 import {useRecoilState} from "recoil";
 
