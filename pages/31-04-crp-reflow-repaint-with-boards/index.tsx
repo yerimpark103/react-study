@@ -38,8 +38,9 @@ export default function StaticRoutedPage() {
 
   return (
     <>
-      {data?.fetchBoards.map((board) => (
-        <Row key={board._id}>
+      {/* 임시 배열 10개를 생성하여 데이터가 없을 때에도 높이 30px를 유지하여 reflow 방지 */}
+      {(data?.fetchBoards ?? new Array(10).fill(1)).map((board) => (
+        <Row key={board._id} style={{height: "30px"}}>
           <Column>{board.writer}</Column>
           <Column>{board.title}</Column>
         </Row>
@@ -52,11 +53,6 @@ export default function StaticRoutedPage() {
             {index + 1}
           </span>
         ))}
-      {/* {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((el) => (
-        <span key={el} id={String(el)} onClick={onClickPage}>
-          {el}
-        </span>
-      ))} */}
     </>
   );
 }
